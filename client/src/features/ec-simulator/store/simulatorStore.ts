@@ -107,7 +107,7 @@ export const useSimulatorStore = create<SimulatorState>()(
       tool: 'select',
       pendingKind: null,
       selectedIds: [],
-      theme: typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+      theme: 'light',
       simResult: emptyResult(),
       transient: emptyTransient(),
       lastSig: '',
