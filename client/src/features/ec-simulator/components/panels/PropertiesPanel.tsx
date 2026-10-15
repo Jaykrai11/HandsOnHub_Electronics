@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   AlertCircle,
   RotateCw,
@@ -9,7 +9,6 @@ import {
   Activity,
   Cpu,
   Layers,
-  HelpCircle,
   ChevronDown,
   Gauge,
   Sliders,
@@ -19,7 +18,7 @@ import { COMPONENT_DEFS } from '../../data/componentDefs';
 import { formatValue } from '../../lib/format';
 import { ComponentIcon } from '../canvas/ComponentIcons';
 import OscilloscopeView from './OscilloscopeView';
-import type { HoleId, PlacedComponent, SimulationResult } from '../../types';
+import type { HoleId, SimulationResult } from '../../types';
 
 function describeHole(h?: HoleId): string {
   if (!h) return 'Unconnected';
@@ -353,7 +352,7 @@ const NodeVoltagesSection: React.FC<{ simResult: SimulationResult | null }> = ({
               </tr>
               {simResult.nodeVoltages.slice(0, 12).map((n, i) => (
                 <tr key={i}>
-                  <td><span className="ecs-pin-pill">Node {n.node ?? i + 1}</span></td>
+                  <td><span className="ecs-pin-pill">Node {n.nodeId ?? i + 1}</span></td>
                   <td><span className="ecs-pin-volt">{formatValue(n.voltage, 'V')}</span></td>
                 </tr>
               ))}

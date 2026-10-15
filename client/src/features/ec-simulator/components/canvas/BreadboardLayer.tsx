@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Circle, Group, Line, Rect, Text } from 'react-konva';
 import {
   boardHeight,

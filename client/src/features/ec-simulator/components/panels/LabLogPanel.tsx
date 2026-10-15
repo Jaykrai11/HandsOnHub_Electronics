@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import {
   ClipboardList,
   Activity,
@@ -15,13 +15,10 @@ import {
   Check,
   Zap,
   Gauge,
-  Sliders,
-  Layers,
-  ArrowRight,
 } from 'lucide-react';
 import { useSimulatorStore } from '../../store/simulatorStore';
 import { formatValue } from '../../lib/format';
-import type { LogCategory, ReadingSnapshot } from '../../types';
+import type { LogCategory } from '../../types';
 
 export default function LabLogPanel() {
   const {
@@ -32,7 +29,6 @@ export default function LabLogPanel() {
     clearLogs,
     recordReadingSnapshot,
     components,
-    wires,
     simResult,
     isSimulating,
   } = useSimulatorStore();
@@ -86,7 +82,7 @@ export default function LabLogPanel() {
     let suppliedPower = 0;
     let dissipatedPower = 0;
     liveReadings.forEach((r) => {
-      if (r.kind === 'battery' || r.kind === 'dc_source') {
+      if (r.kind === 'battery') {
         suppliedPower += Math.max(0, -r.power);
       } else {
         dissipatedPower += Math.max(0, r.power);

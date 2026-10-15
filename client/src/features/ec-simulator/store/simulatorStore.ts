@@ -452,14 +452,14 @@ export const useSimulatorStore = create<SimulatorState>()(
         get().addLog({
           type: 'step',
           title: 'Experiment Preset Loaded',
-          details: `Loaded circuit: "${ex.name}" with ${ex.components.length} components and ${ex.wires.length} wires.`,
+          details: `Loaded circuit: "${name}" with ${ex.components.length} components and ${ex.wires.length} wires.`,
         });
         if (get().isSimulating) {
-          get().recordReadingSnapshot(`Loaded: ${ex.name}`);
+          get().recordReadingSnapshot(`Loaded: ${name}`);
         }
       },
 
-      isSimulating: true,
+      isSimulating: false,
       startSimulation: () => {
         set({ isSimulating: true });
         get().recompute(true);
